@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test2?useSSL=false&serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: 123456
+  thymeleaf:
+    cache: false
+    mvc:
+      favicon:
+        enabled: false
+        spring.thymeleaf.content-type: text/html
+        spring.thymeleaf.cache: false
+        spring.thymeleaf.mode: LEGACYHTML5
+
+        #分页pageHelper
+        pagehelper:
+          helperDialect: mysql
+          reasonable: true
+          supportMethodsArguments: true
+          pageSizeZero: true
+          params: count=countSql
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        hbm2dd1:
+          auto: update
+        dialect: com.ikeguang.paging.config.MysqlConfig
+
+
+mybatis:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.example.zhongyiyao4.bean
+
+server:
+  port: 8080
+
+
+#showSql
+logging:
+  level:
+    com:
+    example:
+      mapper: DEBUG
+
